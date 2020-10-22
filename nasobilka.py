@@ -1,29 +1,42 @@
 import random
 import datetime
 
+znak_nasobeni = '.'
+max_cislo_umi = 50
+soubor_ini = 'nasobilka.ini'
+
 fn = datetime.datetime.now().strftime("%m%d%H%M")
 
-while True:
+try:
+    with open(soubor_ini, "r", encoding="utf-8") as dest:
+        jmeno_uzivatele = dest.readline()
+    print('spouští uživatel {}'.format(jmeno_uzivatele))
+    pokr = True    
+except:
+    print('soubor {} se jménem uživatele neexistuje'.format(soubor_ini))
+    pokr = False
+
+while pokr:
     try:
         #print('zadejte a: ')
         a = int((random.random()*8)+2)
         b = int(random.random()*10)
 
-        if a*b > 50:
-            vysl = 'Aleš ještě neumí {} . {} = {}'.format(a,b,a*b)
+        if a * b > max_cislo_umi:
+            vysl = '{} ještě neumí {} {} {} = {}'.format(jmeno_uzivatele, a, znak_nasobeni, b, a * b)
             v = 0
         else:
             vysl = 'je to špatně'
-            print('zadej výsledek {} . {}: '.format(a, b))
+            print('zadej výsledek {} {} {}: '.format(a, znak_nasobeni, b))
             v = int(input())
         if v == a*b:
             vysl = 'je to dobře'
-        #print('výsledek a*b: {}, {}'.format(a*b, vysl))
+
         print('{}'.format(vysl))
         cas = datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S")
 
         with open('vysledek{}.txt'.format(fn), "a+", encoding="utf-8") as dest:
-            dest.write('{}       {} . {} = {}       {}\n'.format(cas, a, b, v, vysl))
+            dest.write('{}       {} x {} = {}       {}\n'.format(cas, a, b, v, vysl))
 
         print()
     except ValueError:
