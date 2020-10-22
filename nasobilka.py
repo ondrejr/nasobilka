@@ -3,8 +3,9 @@ import datetime
 
 znak_nasobeni = '.'
 max_cislo_umi = 50
+max_vysledek = 100
+a_zacina_od = 3                 # b zacina od 0
 soubor_ini = 'nasobilka.ini'
-
 fn = datetime.datetime.now().strftime("%m%d%H%M")
 
 try:
@@ -19,8 +20,9 @@ except:
 while pokr:
     try:
         #print('zadejte a: ')
-        a = int((random.random()*8)+2)
-        b = int(random.random()*10)
+        pom = max_vysledek / 10
+        a = int(((random.random()* pom) - a_zacina_od) + a_zacina_od)
+        b = int(random.random()* pom)
 
         if a * b > max_cislo_umi:
             vysl = '{} ještě neumí {} {} {} = {}'.format(jmeno_uzivatele, a, znak_nasobeni, b, a * b)
