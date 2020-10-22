@@ -21,6 +21,7 @@ while True:
         #print('výsledek a*b: {}, {}'.format(a*b, vysl))
         print('{}'.format(vysl))
         cas = datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S")
+
         with open('vysledek{}.txt'.format(fn), "a+", encoding="utf-8") as dest:
             dest.write('{}       {} . {} = {}       {}\n'.format(cas, a, b, v, vysl))
 
