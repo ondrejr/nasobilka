@@ -10,7 +10,11 @@ fn = datetime.datetime.now().strftime("%m%d%H%M")
 
 try:
     with open(soubor_ini, "r", encoding="utf-8") as dest:
-        jmeno_uzivatele = dest.readline()
+        inis = dest.readlines()
+    for vals in inis:
+        val = vals.split('=')
+        if val[0] == 'jmeno':
+            jmeno_uzivatele = val[1]
     print('spouští uživatel {}'.format(jmeno_uzivatele))
     pokr = True    
 except:
