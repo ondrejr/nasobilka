@@ -4,13 +4,17 @@ import datetime
 znak_nasobeni = '.'
 max_cislo_umi = 50
 max_vysledek = 100
-a_zacina_od = 3                 # b zacina od 0
+a_zacina_od = 3    	             # b zacina od 0
 soubor_ini = 'nasobilka.ini'
 fn = datetime.datetime.now().strftime("%m%d%H%M")
 
 try:
     with open(soubor_ini, "r", encoding="utf-8") as dest:
-        jmeno_uzivatele = dest.readline()
+        inis = dest.readlines()
+    for vals in inis:
+        val = vals.split('=')
+        if val[0] == 'jmeno':
+            jmeno_uzivatele = val[1]
     print('spouští uživatel {}'.format(jmeno_uzivatele))
     pokr = True    
 except:
