@@ -4,7 +4,7 @@ import datetime
 znak_nasobeni = '.'
 max_cislo_umi = 50
 max_vysledek = 100
-a_zacina_od = 3                 # b zacina od 0
+a_zacina_od = 3    	             # b zacina od 0
 soubor_ini = 'nasobilka.ini'
 fn = datetime.datetime.now().strftime("%m%d%H%M")
 
